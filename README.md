@@ -4,7 +4,7 @@
 ## Labs
 
 ### Lab 1: Domain Events in Spring
-[Donmain Events in Spring](lab1.md)
+[Domain Events in Spring](lab1.md)
 
 ### Lab 2: local kafka console commands
 [Console Commands](lab2.md)
