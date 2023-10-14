@@ -1,0 +1,11 @@
+<form action="#" th:action="@{/add_order}" th:object="${order}" method="post">
+    <label for="description">Description</label>
+    <input type="text" th:field="*{description}" id="description" placeholder="description">
+    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+    <label for="amount">Amount</label>
+    <input type="text" th:field="*{amount}" id="amount" placeholder="amount">
+    <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></span>
+    <label for="customerId">Customer Id</label>
+    <input type="text" th:field="*{customerId}" id="customerId" placeholder="customerId">
+    <input type="submit" value="Add Order">
+</form>

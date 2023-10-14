@@ -1,0 +1,26 @@
+<div th:switch="${customers}">
+    <h2 th:case="null">No customers yet!</h2>
+    <div th:case="*">
+        <h2>Customers</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th># of Orders</th>
+                <th>Orders</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.id}"></td>
+                <td th:text="${customer.name}"></td>
+                <td th:text="${customer.amountOfOrders}"></td>
+                <td><a th:href="@{/new_order/{id}(id=${customer.id})}">New Order</a></td>
+                <td><a th:href="@{/list_order/{id}(id=${customer.id})}">List Orders</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
