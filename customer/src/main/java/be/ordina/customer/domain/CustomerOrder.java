@@ -76,6 +76,7 @@ public class CustomerOrder extends AbstractAggregateRoot<CustomerOrder> {
     public void pay(){
         this.paid = true;
 
+        registerEvent(new OrderPaid(this));
         //#lab5 what could we do with the OrderPaid Event ... or is that more a lab 6 ;-)
     }
 

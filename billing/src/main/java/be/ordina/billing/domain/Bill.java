@@ -34,6 +34,10 @@ public class Bill extends AbstractAggregateRoot<Bill> {
 
     public void pay() {
         //#lab5
+        this.paid = true;
+        this.paymentDate = LocalDateTime.now();
+
+        registerEvent(new BillPaidEvent(this));
     }
 
     public Long getId() {

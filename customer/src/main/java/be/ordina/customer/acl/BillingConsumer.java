@@ -1,8 +1,10 @@
 package be.ordina.customer.acl;
 
+import be.ordina.customer.domain.CustomerOrder;
 import be.ordina.customer.repository.OrderRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -19,10 +21,15 @@ public class BillingConsumer {
         this.orderRepository = orderRepository;
     }
 
+    @KafkaListener(topics = "billing-topic")
     void onBillPaidEvent(BillPaidEvent event) {
         logger.info("Event received = {}", event);
 
-        //implement me
+        CustomerOrder order = this.orderRepository.findById(event.getOrderId()).orElse(null);
+
+        order.setPaid(true);
+
+        this.orderRepository.save(order);
 
     }
 
