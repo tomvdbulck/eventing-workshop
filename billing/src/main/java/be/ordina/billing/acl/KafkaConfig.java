@@ -10,7 +10,7 @@ public class KafkaConfig {
 
     //#lab5
     @Bean
-    public NewTopic orderTopic() {
+    public NewTopic billingTopic() {
         return TopicBuilder.name("billing-topic")
                 .partitions(1)
                 .replicas(1)
