@@ -24,11 +24,14 @@ public class OrderConsumer {
 
 
     //#lab4
+    @KafkaListener(topics = "order-topic")
+    @Transactional
     public void consume(OrderCompletedEvent event) {
         logger.info("Order is: {}", event);
 
-        //only logging?
+        Bill bill = new Bill(event.getAmount(), event.getOrderNumber(), event.getCustomerId());
 
+        billingRepository.save(bill);
     }
 
     public static class OrderCompletedEvent {
