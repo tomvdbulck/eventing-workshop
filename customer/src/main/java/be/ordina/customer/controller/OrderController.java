@@ -51,6 +51,8 @@ public class OrderController {
 
         //#lab1
         //complete the order ... and something else ...
+        draftOrder.complete();
+        orderRepository.save(draftOrder);
 
         return "redirect:/list_order/"+order.getCustomerId();
     }
